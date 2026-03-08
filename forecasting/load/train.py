@@ -6,8 +6,10 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..',
 
 from forecasting.load.forecaster import LoadForecaster
 
-DATA_PATH  = "forecasting/data/load/load_data_north_india.csv"
-MODEL_DIR  = "models/load forecaster"
+# Find the project root directory
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
+DATA_PATH = os.path.join(BASE_DIR, "forecasting", "data", "load", "load_data_north_india.csv")
+MODEL_DIR = os.path.join(BASE_DIR, "models", "load forecaster")
 
 def main():
     if not os.path.exists(DATA_PATH):

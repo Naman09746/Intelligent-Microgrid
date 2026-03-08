@@ -55,7 +55,7 @@ def evaluate_mape(model, df: pd.DataFrame) -> float:
     y = df[TARGET_COL]
 
     # Model predictions clipped to standby draw
-    preds = np.clip(model.predict(X), 0.04, None)
+    preds = np.clip(model.predict(X), 0.03, None)
     
     mape = np.mean(np.abs((y - preds) / y)) * 100
     return round(mape, 4)

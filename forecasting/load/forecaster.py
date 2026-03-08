@@ -65,8 +65,8 @@ class LoadForecaster:
         df.dropna(subset=[TARGET_COL], inplace=True)
 
         # Integrity Check: Load should never be zero in a residential setting (standby draw)
-        # We clip to 0.04 kW based on synthesis parameters
-        df[TARGET_COL] = df[TARGET_COL].clip(lower=0.04)
+        # We clip to 0.03 kW based on synthesis parameters
+        df[TARGET_COL] = df[TARGET_COL].clip(lower=0.03)
         
         # Ensure lat/lon are floats
         df['lat'] = df['lat'].astype(float)
@@ -122,7 +122,7 @@ class LoadForecaster:
 
         # Evaluate
         preds = self.model.predict(X_test)
-        preds = np.clip(preds, 0.04, None)
+        preds = np.clip(preds, 0.03, None)
 
         rmse = np.sqrt(mean_squared_error(y_test, preds))
         mape = mean_absolute_percentage_error(y_test, preds) * 100
@@ -255,7 +255,7 @@ class LoadForecaster:
 
             X = pd.DataFrame([row])[FEATURE_COLS]
             pred = float(self.model.predict(X)[0])
-            pred = max(0.04, pred)  # Standby draw constraint
+            pred = max(0.03, pred)  # Standby draw constraint
 
             predictions.append(round(pred, 4))
             last_load = pred  # Roll forward for next hour's lag_1h

@@ -9,7 +9,7 @@ The model was trained on 5 years of historical data (2019–2023) and evaluated 
 | Metric | Value | Target | Status |
 | :--- | :--- | :--- | :--- |
 | **MAPE (Mean Absolute % Error)** | **2.84%** | < 15% | ✅ **Passed** |
-| **RMSE (Root Mean Square Error)** | **0.0088 kW** | — | ✅ **Excellent** |
+| **RMSE (Root Mean Square Error)** | **0.0088 kW** | — | ✅ **Excellent** |    
 | **Training Samples** | **175,292** | — | — |
 | **Test Samples** | **43,823** | — | — |
 
