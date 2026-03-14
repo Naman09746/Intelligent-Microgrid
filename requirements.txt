@@ -6,3 +6,7 @@ xgboost
 scikit-learn
 joblib
 matplotlib
+fastapi
+uvicorn[standard]
+sqlalchemy>=2.0
+pydantic>=2.0
