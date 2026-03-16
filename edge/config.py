@@ -36,6 +36,11 @@ HOME_ID = os.getenv("HOME_ID", "delhi_01")
 # Mandatory 10 % SoC reserve (N-1 resiliency, matches project spec)
 SAFETY_BUFFER_SOC = float(os.getenv("SAFETY_BUFFER_SOC", "10.0"))
 
+# Orchestrator safety thresholds
+VOLTAGE_UNSTABLE_V  = float(os.getenv("VOLTAGE_UNSTABLE_V", "200.0"))
+VOLTAGE_FAILED_V    = float(os.getenv("VOLTAGE_FAILED_V", "180.0"))
+GRID_FAILURE_DEBOUNCE = int(os.getenv("GRID_FAILURE_DEBOUNCE", "3"))
+
 # ---------------------------------------------------------------------------
 # Storage — each node writes to its own isolated SQLite file
 # ---------------------------------------------------------------------------
@@ -56,6 +61,9 @@ def safe_window_topic(node_id: str) -> str:
 
 def handshake_request_topic(node_id: str) -> str:
     return f"microgrid/{node_id}/handshake/request"
+
+def handshake_response_topic(node_id: str) -> str:
+    return f"microgrid/{node_id}/handshake/response"
 
 # Wildcard topics (used by ingestion services that listen to all nodes)
 TOPIC_ALL_TELEMETRY        = "microgrid/+/telemetry"
