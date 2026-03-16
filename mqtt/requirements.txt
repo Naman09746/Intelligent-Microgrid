@@ -1,6 +1,0 @@
-# d:\Intelligent-Microgrid-main\Intelligent-Microgrid-main\mqtt\requirements.txt
-
-# Pinned dependencies to ensure environment consistency
-paho-mqtt==1.6.1
-SQLAlchemy>=2.0.40
-amqtt>=0.11.0  # Optional: lightweight Python MQTT broker for dev/testing

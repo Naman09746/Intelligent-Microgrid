@@ -6,7 +6,15 @@ xgboost
 scikit-learn
 joblib
 matplotlib
+
+# Web / API (added by teammate)
 fastapi
 uvicorn[standard]
-sqlalchemy>=2.0
 pydantic>=2.0
+
+# Edge Data Layer
+paho-mqtt>=1.6.1
+sqlalchemy>=2.0.0
+
+# Dev-only: lightweight Python MQTT broker (production use Mosquitto instead)
+# amqtt>=0.11.0

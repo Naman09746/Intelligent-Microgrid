@@ -50,3 +50,8 @@ Thumbs.db
 ppt_text.txt
 synopsis_text.txt
 *.log
+
+# Edge Data Layer — SQLite databases (private per-node, never committed)
+data/edge/
+*.db
+marketplace.db
