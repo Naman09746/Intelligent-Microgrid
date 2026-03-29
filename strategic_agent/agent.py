@@ -146,9 +146,16 @@ class StrategicAgent:
         # We shift the 24h curves based on the current simulated hour
         import random
         from datetime import datetime
+        
+        as_of_str = node_data.get('as_of', '')
+        logger.info(f"[{self.node_id}] Simulation Time (as_of): {as_of_str}")
+        
         try:
-            current_hour = datetime.fromisoformat(node_data.get('as_of', '')).hour
-        except (ValueError, TypeError):
+            # Robust parsing: handles T or space, and ignores timezone offsets if problematic
+            clean_ts = as_of_str.replace(' ', 'T').split('.')[0]
+            current_hour = datetime.fromisoformat(clean_ts).hour
+        except (ValueError, TypeError, IndexError) as e:
+            logger.warning(f"Failed to parse 'as_of' timestamp '{as_of_str}': {e}. Defaulting to 0.")
             current_hour = 0
             
         # 24-hour baseline profiles
